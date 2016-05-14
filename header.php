@@ -38,13 +38,13 @@
                
                 <?php /* Primary navigation */
                     wp_nav_menu( array(
-                        'theme_location' => 'primary',
-                      'menu' => 'top_menu',
-                      'depth' => 0,
-                      'container' =>true,
-                      'menu_class' => 'nav navbar-nav',
-                      //Process nav menu using our custom nav walker
-                      'walker' => new wp_bootstrap_navwalker())
+                    'theme_location' => 'primary',
+                    'menu' => 'top_menu',
+                    'depth' => 0,
+                    'container' =>true,
+                    'menu_class' => 'nav navbar-nav',
+                    //Process nav menu using our custom nav walker
+                    'walker' => new wp_bootstrap_navwalker())
                     );
                 ?>
             </div>
