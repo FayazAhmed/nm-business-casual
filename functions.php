@@ -54,10 +54,52 @@
 			add_theme_support( 'html5', array(
 				'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
 			) );
+			/**
+			*** setting header image
+			**/
+			$header_image = array (
+				'uploads' => true 
+			);
+			add_theme_support ( 'custom-header', $header_image );
+			/**
+			*** the_excerpt Settings
+			**/
+			// 
+			remove_filter ( 'the_excerpt', 'wpautop' );
+			/**
+			*** Setup the WordPress core custom background feature.
+			**/
+			add_theme_support ( 'custom-background', apply_filters ( 'nm_slice_custom_background_args', array (
+				'default-color' => 'F2F2F2',
+				'default-image' => '' 
+			) ) );
+
 
 		}
 	endif;
 		add_action('after_setup_theme', 'nm_business_casual');
+
+
+	if (! function_exists ( 'nm_business_casual_widgets' )) :
+		/**
+		*** widgets the theme
+		**/
+		function nm_business_casual_widgets(){
+	
+			//registering first widget at homepage
+			register_sidebar( 
+			array(
+				'name' => __( 'Footer Widget 1', 'nm_business_casual' ),
+				'id' => 'footer-w-1',
+				'description' => __( 'This is home page wiget one', 'nm_business_casual' ),
+				'before_widget' => '',
+				'after_widget' => '',
+				'before_title' => '',
+				'after_title' => '',
+			));
+		}
+	endif;
+	add_action( 'widgets_init', 'nm_business_casual_widgets' );
 
 	/** 
 	***	Adding scripts and style to theme	
