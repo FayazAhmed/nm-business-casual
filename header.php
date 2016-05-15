@@ -13,7 +13,7 @@
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 
     <div class="brand">Business Casual</div>
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
@@ -39,7 +39,6 @@
                 <?php /* Primary navigation */
                     wp_nav_menu( array(
                     'theme_location' => 'primary',
-                    'menu' => 'top_menu',
                     'depth' => 0,
                     'container' =>true,
                     'menu_class' => 'nav navbar-nav',

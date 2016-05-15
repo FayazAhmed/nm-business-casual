@@ -97,6 +97,42 @@
 				'before_title' => '',
 				'after_title' => '',
 			));
+
+			//registering first widget at homepage
+			register_sidebar( 
+			array(
+				'name' => __( 'Footer Widget 2', 'nm_business_casual' ),
+				'id' => 'footer-w-2',
+				'description' => __( 'This is home page wiget one', 'nm_business_casual' ),
+				'before_widget' => '',
+				'after_widget' => '',
+				'before_title' => '',
+				'after_title' => '',
+			));
+
+			//registering first widget at homepage
+			register_sidebar( 
+			array(
+				'name' => __( 'Footer Widget 3', 'nm_business_casual' ),
+				'id' => 'footer-w-3',
+				'description' => __( 'This is home page wiget one', 'nm_business_casual' ),
+				'before_widget' => '',
+				'after_widget' => '',
+				'before_title' => '',
+				'after_title' => '',
+			));
+
+			//registering first widget at homepage
+			register_sidebar( 
+			array(
+				'name' => __( 'Footer Widget 4', 'nm_business_casual' ),
+				'id' => 'footer-w-4',
+				'description' => __( 'This is home page wiget one', 'nm_business_casual' ),
+				'before_widget' => '',
+				'after_widget' => '',
+				'before_title' => '',
+				'after_title' => '',
+			));
 		}
 	endif;
 	add_action( 'widgets_init', 'nm_business_casual_widgets' );

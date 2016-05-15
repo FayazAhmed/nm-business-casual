@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="row">
+      <!--   <div class="row">
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
@@ -77,8 +77,35 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                 </div>
             </div>
-        </div>
-
+        </div> -->
+        <?php
+                        if( have_posts() ){
+                          
+                          while( have_posts() ){
+                            
+                            the_post();
+                            ?>
+                            <div class="row">
+                                <div class="box">
+                                    <div class="col-lg-12">
+                                        <hr>
+                                        <h2 class="intro-text text-center">
+                                            <strong><?php the_title();?></strong>
+                                        </h2>
+                                        <hr>
+                                        <?php the_content(); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        
+                            
+                            
+                          <?php
+                          }
+                          
+                        }
+                        ?>
     </div>
     <!-- /.container -->
 <?php get_footer(); ?>
