@@ -14,3 +14,10 @@ Text Domain: nm-blogo
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+.post-img {
+	max-width: 400px !important;
+	margin-right: 20px;
+}
+.list-group .list-group-item {
+    background-color: rgba(255, 255, 255, 0.28);	
+}

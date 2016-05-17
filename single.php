@@ -4,7 +4,7 @@
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
-			                    <?php
+			            <?php
 			        	if( have_posts() ){
 			        	  
 			        	  while( have_posts() ){

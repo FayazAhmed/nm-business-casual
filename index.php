@@ -37,11 +37,11 @@
                     <h2 class="brand-before">
                         <small>Welcome to</small>
                     </h2>
-                    <h1 class="brand-name">Business Casual</h1>
+                    <h1 class="brand-name"><?php echo get_option('blogdescription'); ?></h1>
                     <hr class="tagline-divider">
                     <h2>
                         <small>By
-                            <strong>Start Bootstrap</strong>
+                            <strong>N-Media</strong>
                         </small>
                     </h2>
                 </div>
@@ -82,14 +82,26 @@
                         if( have_posts() ){
                           
                           while( have_posts() ){
+
                             
                             the_post();
                             ?>
+
                             <div class="row">
                                 <div class="box">
                                     <div class="col-lg-12">
                                         <hr>
-                                        <h2 class="intro-text text-center">
+                                        <?php
+
+                                            if( has_post_thumbnail() ){
+                                            the_post_thumbnail('medium',array('class'=>'img-thumbnail post-img img-responsive pull-left'));
+                                            }
+                                            else {
+                                                echo '<img  class="img-thumbnail post-img img-responsive pull-left"  src="'.get_stylesheet_directory_uri(). '/img/slide-3.jpg" />';
+                                            }
+
+                                        ?>
+                                        <h2 class="intro-text">
                                             <strong><?php the_title();?></strong>
                                         </h2>
                                         <hr>
