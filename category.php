@@ -4,18 +4,20 @@
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
-
-        	
                 	<?php
-                	if( have_posts() ){
-                	    
+                	if( have_posts() ){   
                 	?>
-                	<h1><?php printf( __( 'Category Archives: %s', 'Nm-business_casual' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
+                        <!-- ********   Showing category title and printf 'Category Archives'    ******* -->
+
+                	   <h1>
+                            <?php printf( __( 'Category Archives: %s', 'Nm-business_casual' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?>
+                       </h1>
+                    <!-- *******    Showing category deccription if category have it.    ****** -->
 
         			<?php if ( category_description() ) : // Show an optional category description ?>
         				<?php echo category_description(); ?>
         			<?php endif; ?>
-        			</header><!-- .archive-header -->
+        			
         			
         			
                 	<?php  
