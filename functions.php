@@ -136,3 +136,12 @@
 
 	add_action('wp_enqueue_scripts', 'nm_business_scripts');
 
+	function excerpt_style( $more ) {
+		return '  .....';
+	}
+	add_filter('excerpt_more',('excerpt_style'));
+	
+	function custom_excerpt_length( $length ) {
+	return 30;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
