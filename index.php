@@ -76,7 +76,10 @@
                                             <strong><?php the_title();?></strong>
                                         </h2>
                                         <hr>
-                                        <?php the_excerpt(); ?>
+                                        <p>
+                                            <?php the_excerpt(); ?>
+                                        </p>
+                                        <a href="<?php the_permalink(); ?>" class="btn btn-default btn-sm post-button pull-right">READ MORE</a>
                                     </div>
                                 </div>
                             </div>
