@@ -97,8 +97,7 @@
 					'before_title' => '<h3>',
 					'after_title' => '</h3>',
 				));				
-			}
-			
+			}	
 		}
 	endif;
 	add_action( 'widgets_init', 'nm_business_casual_widgets' );
