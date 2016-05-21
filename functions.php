@@ -135,13 +135,19 @@
 	}
 
 	add_action('wp_enqueue_scripts', 'nm_business_scripts');
-
+	
+	/**
+	*** excerpt styling (paragraph ending style)
+	**/
 	function excerpt_style( $more ) {
 		return '  .....';
 	}
 	add_filter('excerpt_more',('excerpt_style'));
-	
+
+	/**
+	*** excerpt length (paragraph words lenght)
+	**/
 	function custom_excerpt_length( $length ) {
 	return 30;
-}
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+	}
+	add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
