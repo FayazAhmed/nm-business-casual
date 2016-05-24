@@ -9,7 +9,7 @@
 					<a href="<?php echo the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
 					<p><?php the_excerpt(); ?></p>
 				<?php endwhile; else : ?>
-					<h2>not found</h2>
+					<h2>Not Found</h2>
 				<?php endif; ?>
 			</div>
 		</div>

@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
             <div class="box">
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                     <hr>
 			            <?php
 			        	if( have_posts() ){
@@ -26,7 +26,10 @@
 			        	  
 			        	}
 			        	?>
-                </div>   
+                </div>  
+                <div class="col-lg-4">
+                	<?php get_sidebar(); ?>
+                </div> 
             </div>
         </div>
     </div>

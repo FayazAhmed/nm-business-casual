@@ -50,44 +50,44 @@
 
      
         <?php
-                        if( have_posts() ){
-                          
-                          while( have_posts() ){
+        if( have_posts() ){
+          
+          while( have_posts() ){
 
-                            
-                            the_post();
-                            ?>
+            
+            the_post();
+            ?>
 
-                            <div class="row">
-                                <div class="box">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                                        <hr>
-                                        <?php
+            <div class="row">
+                <div class="box">
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                        <hr>
+                        <?php
 
-                                            if( has_post_thumbnail() ){
-                                            the_post_thumbnail('medium',array('class'=>'img-thumbnail post-img img-responsive pull-left'));
-                                            }
-                                            else {
-                                                echo '<img  class="img-thumbnail post-img img-responsive pull-left"  src="'.get_stylesheet_directory_uri(). '/img/slide-3.jpg" />';
-                                            }
+                            if( has_post_thumbnail() ){
+                            the_post_thumbnail('medium',array('class'=>'img-thumbnail post-img img-responsive pull-left'));
+                            }
+                            else {
+                                echo '<img  class="img-thumbnail post-img img-responsive pull-left"  src="'.get_stylesheet_directory_uri(). '/img/slide-3.jpg" />';
+                            }
 
-                                        ?>
-                                        <h2 class="intro-text">
-                                            <strong><?php the_title();?></strong>
-                                        </h2>
-                                        <hr>
-                                        <p>
-                                            <?php the_excerpt(); ?>
-                                        </p>
-                                        <a href="<?php the_permalink(); ?>" class="btn btn-default btn-sm post-button pull-right">READ MORE</a>
-                                    </div>
-                                </div>
-                            </div>
-                          <?php
-                          }
-                          
-                        }
                         ?>
+                        <h2 class="intro-text">
+                            <a href="<?php the_permalink(); ?>" ><strong><?php the_title();?></strong></a>
+                        </h2>
+                        <hr>
+                        <p>
+                            <?php the_excerpt(); ?>
+                        </p>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-default btn-sm post-button pull-right">READ MORE</a>
+                    </div>
+                </div>
+            </div>
+          <?php
+          }
+          
+        }
+        ?>
     </div>
     <!-- /.container -->
 <?php get_footer(); ?>

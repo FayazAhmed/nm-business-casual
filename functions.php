@@ -54,13 +54,7 @@
 			add_theme_support( 'html5', array(
 				'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
 			) );
-			/**
-			*** setting header image
-			**/
-			$header_image = array (
-				'uploads' => true 
-			);
-			add_theme_support ( 'custom-header', $header_image );
+			
 			/**
 			*** the_excerpt Settings
 			**/
@@ -85,6 +79,15 @@
 		*** widgets the theme
 		**/
 		function nm_business_casual_widgets(){
+			register_sidebar(array ( 
+			'name' => __( 'Main Sidebar', 'daster' ),
+			'id' => 'right-sidebar',
+			'description' => __( 'Widgets in this area will be shown on all posts and pages.', 'business_casual' ),
+			'before_title' 	=> '<h3">',
+			'after_title' 	=> '</h3>',
+			'before_widget'=> '<div class="nm_widget_box">',
+			'after_widget'=> '</div>',		
+			) );
 	
 			for ($i=1; $i <= 4 ; $i++) { 
 				register_sidebar( 
