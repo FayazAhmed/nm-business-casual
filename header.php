@@ -12,10 +12,11 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <?php wp_head(); ?>
+
 </head>
 <body <?php body_class(); ?>>
 
-    <div class="brand"><?php echo get_option('current_theme'); ?></div>
+    <div class="brand" id="big_title_home"><?php echo get_option('current_theme'); ?></div>
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
 
     <!-- Navigation -->
