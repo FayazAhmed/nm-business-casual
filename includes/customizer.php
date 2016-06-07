@@ -36,21 +36,18 @@
 			  'type'              => 'option',
 			  'capability'        => 'manage_options',
 			  'default'           => '',
-			  'sanitize_callback' => 'sanitize_hex_color',
+			  
 			) );
 
 			$wp_customize->add_setting( 'site-background-color', array(
-			  'type'              => 'option',
-			  'capability'        => 'manage_options',
-			  'default'           => '',
-			  'sanitize_callback' => 'sanitize_hex_color',
+			  'default'     => '#000000',
+    			'transport'   => 'refresh',
 			) );
 
 			$wp_customize->add_setting( 'fuzzy-background-img', array(
-			  'type'              => 'option',
-			  'capability'        => 'manage_options',
-			  'default'           => '',
-			  'sanitize_callback' => 'sanitize_hex_color',
+				'sanitize_callback' => 'esc_url_raw',
+				'default' => get_template_directory_uri().'/img/slide-3.jpg',
+
 			) );
 			/**
 			*** control for theme layout
@@ -72,7 +69,7 @@
 			$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'fuzzy-background-img', array(
 			  'label' => __( 'Fuzzy Background Image', 'nm-fuzzy' ),
 			  'section' => 'general-section',
-			  'mime_type' => 'image',
+			  
 			) ) );
 //   ===============*********** TOP-BAR AREA COSTOMIZE ************============
 
@@ -93,36 +90,33 @@
 			**/
 
 			$wp_customize->add_setting( 'fuzzy_big_title', array(
-			  'type'              => 'option',
+			  //'type'              => 'option',
 			  'capability'        => 'manage_options',
-			  'default'           => '',
+			  'default'           => 'Let Say Hello',
 			  'transport'		  => 'postMessage',
 			) );
 
 			$wp_customize->add_setting( 'fuzzy_big_title_color', array(
-			  'default'     => '#000000',
+				'default'     => '#000000',
     			'transport'   => 'refresh',
 			) );
 
 			$wp_customize->add_setting( 'fuzzy_menu_bg_color', array(
-			  'default'     => '#000000',
+			  'default'     => '',
     			'transport'   => 'refresh',
 			) );
 
 
-
-			$wp_customize->add_setting( 'fuzzy_phone_no', array(
-			  'type'              => 'option',
-			  'capability'        => 'manage_options',
-			  'default'           => '',
-			  'sanitize_callback' => 'sanitize_hex_color',
+			$wp_customize->add_setting( 'fuzzy-set-sub-title', array(
+			
+			  'default'           => 'There is sub tilte area',
+			  'transport'		  => 'postMessage',
 			) );
   			
   			$wp_customize->add_setting( 'fuzzy_email_adress', array(
-			  'type'              => 'option',
 			  'capability'        => 'manage_options',
-			  'default'           => '',
-			  'sanitize_callback' => 'sanitize_hex_color',
+			  'default'           => 'fayaz.nmedia@gmail.com',
+			  'transport'		  => 'postMessage',
 			) );
 			
 			/**
@@ -147,20 +141,20 @@
 			) );
 			
 
-			$wp_customize->add_control( 'fuzzy_phone_no', array(
-			  'label'    => __( 'Set phone no. on top-bar', 'nm-fuzzy' ),
-			  'type'     => 'number',
+			$wp_customize->add_control( 'fuzzy-set-sub-title', array(
+			  'label'    => __( 'Set sub-title', 'nm-fuzzy' ),
+			  'type'     => 'text',
 			  'section'  => 'topbar_section',
 			) );
 
 			$wp_customize->add_control( 'fuzzy_email_adress', array(
 			  'label'    => __( 'Set Email Adress on top-bar', 'nm-fuzzy' ),
-			  'type'     => 'email',
+			  'type'     => 'text',
 			  'section'  => 'topbar_section',
 			) );
 			//=====================*********** HEADER AREA COSTOMIZE ************============
 
-			/*e*
+			/**
 			*** section for header
 			**/
 			$wp_customize->add_section( 'header_section', array(
@@ -175,11 +169,10 @@
 			*** addding settings
 			**/
 			$wp_customize->add_setting( 'fuzzy_nav_menu_font_size', array(
-			  'type'              => 'option',
-			  'capability'        => 'manage_options',
-			  'default'           => '#ff2525',
-			  'sanitize_callback' => 'sanitize_hex_color',
+				'default'     => '#000000',
+    			'transport'   => 'refresh',
 			) );
+			
 
 			$wp_customize->add_setting( 'fuzzy_nav_menu_font_family', array(
 			  'type'              => 'option',
@@ -189,10 +182,8 @@
 			) );
 
 			$wp_customize->add_setting( 'fuzzy_nav_menu_color', array(
-			  'type'              => 'option',
-			  'capability'        => 'manage_options',
-			  'default'           => '#ff2525',
-			  'sanitize_callback' => 'sanitize_hex_color',
+			 	'default'     => '#000000',
+    			'transport'   => 'refresh',
 			) );
 			$wp_customize->add_setting( 'fuzzy_logo_img', array(
 			  'type'              => 'option',
@@ -341,28 +332,35 @@
 	**/
 
 	/**
- * Used by hook: 'customize_preview_init'
- * 
- * @see add_action('customize_preview_init',$func)
- */
-function fuzzy_customizer_live_preview()
-{
-	wp_enqueue_script( 
-		  'fuzzy-themecustomizer',			//Give the script an ID
-		  get_template_directory_uri().'/js/customizer.js',//Point to file
-		  array( 'jquery','customize-preview' ),	//Define dependencies
-		  '',						//Define a version (optional) 
-		  true						//Put script in footer?
-	);
-}
-add_action( 'customize_preview_init', 'fuzzy_customizer_live_preview' );
+	 ** Used by hook: 'customize_preview_init'
+	 **
+	 ** @see add_action('customize_preview_init',$func)
+	 */
+	function fuzzy_customizer_live_preview()
+	{
+		wp_enqueue_script( 
+			  'fuzzy-themecustomizer',			//Give the script an ID
+			  get_template_directory_uri().'/js/customizer.js',//Point to file
+			  array( 'jquery','customize-preview' ),	//Define dependencies
+			  '',						//Define a version (optional) 
+			  true						//Put script in footer?
+		);
+	}
+	add_action( 'customize_preview_init', 'fuzzy_customizer_live_preview' );
 
 function fuzzy_set_live_css_in_header(){
 ?>
 		<style type="text/css">
-             #big_title_home { color:<?php echo get_theme_mod('fuzzy_big_title_color', '#000000'); ?>; }
+            .brand { color:<?php echo get_theme_mod('fuzzy_big_title_color', '#000000'); ?>; }
 
-             .navbar {background-color: <?php echo get_theme_mod('fuzzy_menu_bg_color', '#000000'); ?>;}
+            .navbar { background-color: <?php echo get_theme_mod('fuzzy_menu_bg_color', '#000000'); ?>;}
+
+            #menu-nav-menu>li>a{ color: <?php echo get_theme_mod('fuzzy_nav_menu_color', '#000000'); ?>;}
+
+            body{ background-color: <?php echo get_theme_mod('site-background-color', '#000000'); ?>;}
+            
+			body{ background-image: <?php echo get_theme_mod('fuzzy-background-img' ,get_template_directory_uri().'/img/slid-3.jpg'); ?>;}
+
          </style>
 <?php
 }

@@ -16,8 +16,10 @@
 </head>
 <body <?php body_class(); ?>>
 
-    <div class="brand" id="big_title_home"><?php echo get_option('current_theme'); ?></div>
-    <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
+
+    <div class="brand" id="big_title_home"><?php echo get_theme_mod('fuzzy_big_title'); ?></div>
+    <div class="sub-title"><?php echo get_theme_mod('fuzzy_set-sub-title'); ?></div>
+    <div class="address-bar">3481 Melrose Place | <span id="e-mail"><?php echo get_theme_mod('fuzzy_email_adress') ?></span> | <span id="phoneNo">123.456.7890</span></div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -42,6 +44,7 @@
                     'theme_location' => 'primary',
                     'depth' => 0,
                     'container' =>true,
+                    'menu_id' => 'menu-nav-menu',
                     'menu_class' => 'nav navbar-nav',
                     //Process nav menu using our custom nav walker
                     'walker' => new wp_bootstrap_navwalker())

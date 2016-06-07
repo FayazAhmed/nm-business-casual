@@ -30,3 +30,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 ul>li>a {
 	color: #080808;
 }
+.fuzzy_hidden_if_not_customizer {
+	display: none !important;
+}

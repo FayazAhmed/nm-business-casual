@@ -157,7 +157,9 @@
 	return 30;
 	}
 	add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
-
+	/**
+	*** it include the customizer.php 
+	**/
 	//including Customizer API Settings
 	require get_template_directory() . '/includes/customizer.php';
 
