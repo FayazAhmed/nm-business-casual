@@ -37,7 +37,7 @@
                     <h2 class="brand-before">
                         <small>Welcome to</small>
                     </h2>
-                    <h1 class="brand-name"><?php echo get_option('blogdescription'); ?></h1>
+                    <h1 class="brand-name" id="brand-name"><?php echo get_theme_mod('fuzzy_welcom_to'); ?></h1>
                     <hr class="tagline-divider">
                     <h2>
                         <small>By

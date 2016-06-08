@@ -18,8 +18,8 @@
 
 
     <div class="brand" id="big_title_home"><?php echo get_theme_mod('fuzzy_big_title'); ?></div>
-    <div class="sub-title"><?php echo get_theme_mod('fuzzy_set-sub-title'); ?></div>
-    <div class="address-bar">3481 Melrose Place | <span id="e-mail"><?php echo get_theme_mod('fuzzy_email_adress') ?></span> | <span id="phoneNo">123.456.7890</span></div>
+    <div class="sub-title" id="sub_title"><?php echo get_theme_mod('fuzzy_set-sub-title'); ?></div>
+    <div class="address-bar">3481 Melrose Place | <span id="e-mail"><?php echo get_theme_mod('fuzzy_email_adress'); ?></span> | <span id="phoneNo">123.456.7890</span></div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
