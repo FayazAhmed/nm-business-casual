@@ -56,8 +56,9 @@
 			else {
 				$( '#brand-name' ).addClass( 'fuzzy_hidden_if_not_customizer' );
 			}
-			console.log($( '#brand-name' ).html());
+			
 			$( '#brand-name' ).html( to );
 		} );
 	} );
+
 })( jQuery );

@@ -33,12 +33,11 @@
 			/***************************************************************
 			*********** GENERAL SITE LAYOUT SETINNGS AND CONTROL************
 			***************************************************************/
-  			$wp_customize->add_setting( 'general-site-layout', array(
-			  'type'              => 'option',
-			  'capability'        => 'manage_options',
-			  'default'           => '',
+  			$wp_customize->add_setting( 'general_site_layout', array(
+				'default'     => '#000000',
+    			'transport'   => 'refresh',
 			) );
-			$wp_customize->add_control( 'general-site-layout', array(
+			$wp_customize->add_control( 'general_site_layout', array(
 			  'label'        => __( 'Set theme site layout', 'nm-fuzzy' ),
 			  'type'         => 'radio',
 			  'choices'      =>array(
@@ -51,7 +50,7 @@
 					*** FUZZY SITE BACKGROUND COLOR SETTING AND CONTROL ***
 			***********************************************************************/
 			$wp_customize->add_setting( 'site-background-color', array(
-			  'default'     => '#000000',
+				'default'     => '#000000',
     			'transport'   => 'refresh',
 			) );
 
@@ -65,12 +64,13 @@
 					*** FUZZY BACKGROUND IMAGE SETTING AND CONTROL ***
 			**********************************************************/
 			$wp_customize->add_setting( 'fuzzy-background-img', array(
-				'sanitize_callback' => 'esc_url_raw',
-				'default' => get_template_directory_uri().'/img/slide-3.jpg',
+				// 'sanitize_callback' => 'esc_url',
+				'default' => get_template_directory_uri() . '/img/bg.jpg',
+				'transport'		  => 'refresh',
 
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'fuzzy-background-img', array(
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fuzzy-background-img', array(
 			  'label' => __( 'Fuzzy Background Image', 'nm-fuzzy' ),
 			  'section' => 'general-section',
 			  
@@ -198,12 +198,12 @@
 				*** FUZZY NAV MENU FONT SIZE SETTING AND CONTROL ***
 			**************************************************************/
 			$wp_customize->add_setting( 'fuzzy_nav_menu_font_size', array(
-				'default'     => '#000000',
+				'default'     => '20px',
     			'transport'   => 'refresh',
 			) );
 			$wp_customize->add_control( 'fuzzy_nav_menu_font_size', array(
 			  'label'   => __( 'Set nav-menu font_size', 'nm-fuzzy' ),
-			  'type'    => 'number',
+			  'type'    => 'text',
 			  'section' => 'header_section',
 			) );
 
@@ -211,10 +211,9 @@
 				*** FUZZY NAV MENU FONT FAMILY SETTING AND CONTROL ***
 			**************************************************************/
 			$wp_customize->add_setting( 'fuzzy_nav_menu_font_family', array(
-			  'type'              => 'option',
-			  'capability'        => 'manage_options',
+			  'type'              => 'theme_mod',
 			  'default'           => 'Comic Sans MS',
-			  'sanitize_callback' => 'sanitize_hex_color',
+			  'transport'         => 'refresh',
 			) );
 
 			$wp_customize->add_control( 'fuzzy_nav_menu_font_family', array(
@@ -250,7 +249,7 @@
 			  'capability'        => 'manage_options',
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'fuzzy_logo_img', array(
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fuzzy_logo_img', array(
 			  'label' => __( 'Featured Home Page Image', 'nm-fuzzy' ),
 			  'section' => 'header_section',
 			  'mime_type' => 'image',
@@ -277,15 +276,15 @@
 				*** FUZZY BODY FONT SIZE SETTING AND CONTROL ***
 			**************************************************************/
 			$wp_customize->add_setting( 'fuzzy_body_font_size', array(
-			  'type' => 'option',
+			  
 			  'capability' => 'manage_options',
 			  'default' => '',
-			  'sanitize_callback' => 'sanitize_hex_color',
+			  'transport' => 'refresh',
 			) );
 
 			$wp_customize->add_control( 'fuzzy_body_font_size', array(
 			  'label' => __( 'Set body font size', 'nm-fuzzy' ),
-			  'type' => 'number',
+			  'type' => 'text',
 			  'section' => 'typography_section',
 			) );
   			
@@ -293,15 +292,20 @@
 				*** FUZZY BODY FONT FAMILY SETTING AND CONTROL ***
 			**************************************************************/
 			$wp_customize->add_setting( 'fuzzy_body_font_family', array(
-			  'type' => 'option',
 			  'capability' => 'manage_options',
 			  'default' => '',
-			  'sanitize_callback' => 'sanitize_hex_color',
+			  'transport' => 'refresh',
+			  
 			) );
 
 			$wp_customize->add_control( 'fuzzy_body_font_family', array(
 			  'label' => __( 'Set body font family', 'nm-fuzzy' ),
-			  'type' => 'number',
+			  'type' => 'select',
+			  'choices'=> array(
+			  	'arial' => 'Arial',
+			  	'Helvetica' => 'Helvetica',
+			  	'sans-serif' => 'sans-serif',
+			  	'Comic Sans MS' => 'Comic Sans MS'),
 			  'section' => 'typography_section',
 			) );
 
@@ -309,15 +313,15 @@
 				*** FUZZY BODY PERAGRAPH LINE HEIGHT SETTING AND CONTROL ***
 			*****************************************************************/
 			$wp_customize->add_setting( 'fuzzy_body_paragraph_line_height', array(
-			  'type' => 'option',
-			  'capability' => 'manage_options',
+			  'type' => 'theme_mod',
+			  
 			  'default' => '',
-			  'sanitize_callback' => 'sanitize_hex_color',
+			  'transport' => 'refresh',
 			) );
 
 			$wp_customize->add_control( 'fuzzy_body_paragraph_line_height', array(
 			  'label' => __( 'Set body paragraph line-height', 'nm-fuzzy' ),
-			  'type' => 'number',
+			  'type' => 'text',
 			  'section' => 'typography_section',
 			) );
 
@@ -352,10 +356,10 @@
 			  'label' => __( 'Set theme footer', 'nm-fuzzy' ),
 			  'type' => 'radio',
 			  'choices' => array(
-			  	'radio1' => '1 column',
-			  	'radio2' => '2 columns',
-			  	'radio3' => '3 columns',
-			  	'radio4' => '4 columns'),
+			  	'1_column' => '1 column',
+			  	'2_column' => '2 columns',
+			  	'3_column' => '3 columns',
+			  	'4_column' => '4 columns'),
 			  'section' => 'footer_section',
 			) );
 			
@@ -390,11 +394,21 @@ function fuzzy_set_live_css_in_header(){
 
             .navbar { background-color: <?php echo get_theme_mod('fuzzy_menu_bg_color', '#000000'); ?>;}
 
-            #menu-nav-menu>li>a{ color: <?php echo get_theme_mod('fuzzy_nav_menu_color', ''); ?>;}
+            #menu-nav-menu>li>a { color: <?php echo get_theme_mod('fuzzy_nav_menu_color',''); ?>;}
 
-            body{ background-color: <?php echo get_theme_mod('site-background-color', '#000000'); ?>;}
+            #menu-nav-menu>li>a { font-size: <?php echo get_theme_mod('fuzzy_nav_menu_font_size',''); ?>;}
+
+            #menu-nav-menu>li>a { font-family: <?php echo get_theme_mod('fuzzy_nav_menu_font_family',''); ?>;}
+
+            body { font-family: <?php echo get_theme_mod('fuzzy_body_font_family', ''); ?>;}
+
+            body { font-size: <?php echo get_theme_mod('fuzzy_body_font_size', ''); ?>;}
+
+			body p{ font-size: <?php echo get_theme_mod('fuzzy_body_paragraph_line_height', ''); ?>;}
+
+            body { background-color: <?php echo get_theme_mod('site-background-color', '#000000'); ?>;}
             
-			body{ background-image: <?php echo get_theme_mod('fuzzy-background-img' ,get_template_directory_uri().'/img/slid-3.jpg'); ?>;}
+			body {background-image: url(<?php echo get_theme_mod('fuzzy-background-img'); ?>);}
         </style>
 <?php
 }
