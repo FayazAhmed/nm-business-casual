@@ -46,7 +46,7 @@
 			$( '#e-mail' ).html( to );
 		} );
 	} );
-
+	/* fuzzy-email.-on-top-title */
 	wp.customize( 'fuzzy_welcom_to', function( value ) {
 		value.bind( function( to ) {
 			
@@ -60,5 +60,40 @@
 			$( '#brand-name' ).html( to );
 		} );
 	} );
-
+	// fuzzy slider image (1)
+	wp.customize( 'fuzzy_slider_img_1', function( value ) {
+		value.bind( function( to ) {
+			if( to != '' ) {
+				$( '.item #slider_1' ).removeClass( 'fuzzy_hidden_if_not_customizer' );
+			}
+			else {
+				$( '.item #slider_1' ).addClass( 'fuzzy_if_not_customizer' );
+			}
+			$( '.item #slider_1' ).attr( 'src', to );
+		} );
+	} );
+	// fuzzy slider image (2)
+	wp.customize( 'fuzzy_slider_img_2', function( value ) {
+		value.bind( function( to ) {
+			if( to != '' ) {
+				$( '.item #slider_2' ).removeClass( 'fuzzy_hidden_if_not_customizer' );
+			}
+			else {
+				$( '.item #slider_2' ).addClass( 'fuzzy_hidden_if_not_customizer' );
+			}
+			$( '.item #slider_2' ).attr( 'src', to );
+		} );
+	} );
+	// fuzzy slider image (3)
+	wp.customize( 'fuzzy_slider_img_3', function( value ) {
+		value.bind( function( to ) {
+			if( to != '' ) {
+				$( '.item #slider_3' ).removeClass( 'fuzzy_hidden_if_not_customizer' );
+			}
+			else {
+				$( '.item #slider_3' ).addClass( 'fuzzy_hidden_if_not_customizer' );
+			}
+			$( '.item #slider_3' ).attr( 'src', to );
+		} );
+	} );
 })( jQuery );

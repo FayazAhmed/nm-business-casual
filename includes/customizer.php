@@ -166,18 +166,6 @@
 			  'section'  => 'topbar_section',
 			) );
 
-			/**************************************************************
-				*** FUZZY MENU BACKGROUND COLOR SETTING AND CONTROL ***
-			**************************************************************/
-			$wp_customize->add_setting( 'fuzzy_menu_bg_color', array(
-			  'default'     => '',
-    			'transport'   => 'refresh',
-			) );
-			$wp_customize->add_control( 'fuzzy_menu_bg_color', array(
-			  'label'    => __( 'Set Menu BG Color', 'nm-fuzzy' ),
-			  'type'     => 'color',
-			  'section'  => 'topbar_section',
-			) );
 
 			/**********************************************
 			*********** HEADER AREA COSTOMIZE ************
@@ -194,6 +182,7 @@
 			  'capability'     => 'edit_theme_options',
 			  'theme_supports' => '', // Rarely needed.
 			) );
+
 			/**************************************************************
 				*** FUZZY NAV MENU FONT SIZE SETTING AND CONTROL ***
 			**************************************************************/
@@ -207,6 +196,18 @@
 			  'section' => 'header_section',
 			) );
 
+			/**************************************************************
+				*** FUZZY ON hover NAV MENU FONT SIZE SETTING AND CONTROL ***
+			**************************************************************/
+			$wp_customize->add_setting( 'fuzzy_nav_menu_font_size_on_hover', array(
+				'default'     => '',
+    			'transport'   => 'refresh',
+			) );
+			$wp_customize->add_control( 'fuzzy_nav_menu_font_size_on_hover', array(
+			  'label'   => __( 'Set nav-menu font_size on hover', 'nm-fuzzy' ),
+			  'type'    => 'text',
+			  'section' => 'header_section',
+			) );
 			/**************************************************************
 				*** FUZZY NAV MENU FONT FAMILY SETTING AND CONTROL ***
 			**************************************************************/
@@ -242,15 +243,70 @@
 			) );
 
 			/**************************************************************
-				*** FUZZY LOGO IMAGE SETTING AND CONTROL ***
+				*** FUZZY MENU BACKGROUND COLOR SETTING AND CONTROL ***
 			**************************************************************/
-			$wp_customize->add_setting( 'fuzzy_logo_img', array(
-			  'type'              => 'option',
-			  'capability'        => 'manage_options',
+			$wp_customize->add_setting( 'fuzzy_menu_bg_color', array(
+			  'default'     => '',
+    			'transport'   => 'refresh',
+			) );
+			$wp_customize->add_control( 'fuzzy_menu_bg_color', array(
+			  'label'    => __( 'Set Navbar BG Color', 'nm-fuzzy' ),
+			  'type'     => 'color',
+			  'section'  => 'header_section',
+			) );
+			/**************************************************************
+				*** FUZZY SLIDER IMAGE HEIGHT SETTING AND CONTROL ***
+			**************************************************************/
+			$wp_customize->add_setting( 'fuzzy_slider_image_height', array(
+			  'default'     => '',
+    			'transport'   => 'refresh',
+			) );
+			$wp_customize->add_control( 'fuzzy_slider_image_height', array(
+			  'label'    => __( 'Set Slider Image Height', 'nm-fuzzy' ),
+			  'type'     => 'text',
+			  'section'  => 'header_section',
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fuzzy_logo_img', array(
-			  'label' => __( 'Featured Home Page Image', 'nm-fuzzy' ),
+			/**************************************************************
+				*** FUZZY SLIDER 1 IMAGE SETTING AND CONTROL ***
+			**************************************************************/
+			$wp_customize->add_setting( 'fuzzy_slider_img_1', array(
+			  'type'              => 'theme_mod',
+			  'default' =>  get_template_directory_uri() . '/img/slide-1.jpg',
+			  'transport'         => 'postMessage',
+			) );
+
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fuzzy_slider_img_1', array(
+			  'label' => __( 'Sldier image 1', 'nm-fuzzy' ),
+			  'section' => 'header_section',
+			  
+			) ) );
+			/**************************************************************
+				*** FUZZY SLIDER 2 IMAGE SETTING AND CONTROL ***
+			**************************************************************/
+			$wp_customize->add_setting( 'fuzzy_slider_img_2', array(
+			  'type'              => 'theme_mod',
+			  'default' =>  get_template_directory_uri() . '/img/slide-2.jpg',
+			  'transport'         => 'postMessage',
+			) );
+
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fuzzy_slider_img_2', array(
+			  'label' => __( 'Sldier image 2', 'nm-fuzzy' ),
+			  'section' => 'header_section',
+			  'mime_type' => 'image',
+			) ) );
+
+			/**************************************************************
+				*** FUZZY SLIDER 3 IMAGE SETTING AND CONTROL ***
+			**************************************************************/
+			$wp_customize->add_setting( 'fuzzy_slider_img_3', array(
+			  'type'              => 'theme_mod',
+			  'default' =>  get_template_directory_uri() . '/img/slide-3.jpg',
+			  'transport'         => 'postMessage',
+			) );
+
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fuzzy_slider_img_3', array(
+			  'label' => __( 'Sldier image 3', 'nm-fuzzy' ),
 			  'section' => 'header_section',
 			  'mime_type' => 'image',
 			) ) );
@@ -366,15 +422,15 @@
 		}
 		add_action( 'customize_register', 'fuzzy_customize_register' );
 
-	/**
-	** ========== ENDS --- Theme customizer api block
-	**/
+	/**********************************************************
+	** ========== ENDS --- Theme customizer api block  *********
+	************************************************************/
 
-	/**
-	 ** Used by hook: 'customize_preview_init'
-	 **
-	 ** @see add_action('customize_preview_init',$func)
-	 */
+	/*******************************************************
+	 *** Used by hook: 'customize_preview_init'   		 ***
+	 ***											     ***
+	 *** @see add_action('customize_preview_init',$func) ***
+	 ******************************************************/
 	function fuzzy_customizer_live_preview()
 	{
 		wp_enqueue_script( 
@@ -392,13 +448,17 @@ function fuzzy_set_live_css_in_header(){
 		<style type="text/css">
             .brand { color:<?php echo get_theme_mod('fuzzy_big_title_color', '#000000'); ?>; }
 
-            .navbar { background-color: <?php echo get_theme_mod('fuzzy_menu_bg_color', '#000000'); ?>;}
+            .navbar { background-color: <?php echo get_theme_mod('fuzzy_menu_bg_color', ''); ?>;}
 
             #menu-nav-menu>li>a { color: <?php echo get_theme_mod('fuzzy_nav_menu_color',''); ?>;}
 
             #menu-nav-menu>li>a { font-size: <?php echo get_theme_mod('fuzzy_nav_menu_font_size',''); ?>;}
+            
+            #menu-nav-menu>li>a:hover{ font-size: <?php echo get_theme_mod('fuzzy_nav_menu_font_size_on_hover',''); ?>;}
 
             #menu-nav-menu>li>a { font-family: <?php echo get_theme_mod('fuzzy_nav_menu_font_family',''); ?>;}
+
+            .carousel-inner>.item>img { height: <?php echo get_theme_mod('fuzzy_slider_image_height',''); ?>;}
 
             body { font-family: <?php echo get_theme_mod('fuzzy_body_font_family', ''); ?>;}
 

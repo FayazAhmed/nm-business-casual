@@ -15,14 +15,14 @@
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="img-responsive img-full" src="<?php echo get_template_directory_uri(); ?>/img/slide-1.jpg" alt="">
+                            <div class="item active " >
+                                <img class="img-responsive img-full" id="slider_1" src=<?php echo get_theme_mod('fuzzy_slider_img_1'); ?> alt="">
                             </div>
                             <div class="item">
-                                <img class="img-responsive img-full" src="<?php echo get_template_directory_uri(); ?>/img/slide-2.jpg" alt="">
+                                <img class="img-responsive img-full" id="slider_2" src=<?php echo get_theme_mod('fuzzy_slider_img_2'); ?> alt="">
                             </div>
                             <div class="item">
-                                <img class="img-responsive img-full" src="<?php echo get_template_directory_uri(); ?>/img/slide-3.jpg" alt="">
+                                <img class="img-responsive img-full" id="slider_3" src=<?php echo get_theme_mod('fuzzy_slider_img_3'); ?> alt="">
                             </div>
                         </div>
 
@@ -68,7 +68,7 @@
                             the_post_thumbnail('medium',array('class'=>'img-thumbnail post-img img-responsive pull-left'));
                             }
                             else {
-                                echo '<img  class="img-thumbnail post-img img-responsive pull-left"  src="'.get_stylesheet_directory_uri(). '/img/slide-3.jpg" />';
+                                echo '<img  class="img-thumbnail post-img img-responsive pull-left" id="custome_image"  src="'.get_stylesheet_directory_uri(). '/img/slide-3.jpg" />';
                             }
 
                         ?>
